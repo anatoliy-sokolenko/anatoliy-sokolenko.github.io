@@ -1,0 +1,24 @@
+---
+title: "Генерация сложного XML стандартными средствами Groovy"
+layout: "post"
+permalink: "/-XML-Groovy.html"
+uuid: "1403647808542969414"
+guid: "tag:blogger.com,1999:blog-1763451622132357586.post-1403647808542969414"
+date: "2010-06-03 08:46:00"
+updated: "2010-06-04 08:16:14"
+description: 
+blogger:
+    siteid: "1763451622132357586"
+    postid: "1403647808542969414"
+    comments: "0"
+categories: 
+author: 
+    name: "Anatoliy Sokolenko"
+    url: "https://plus.google.com/110772590697104801292?rel=author"
+    image: "//lh5.googleusercontent.com/-E71202WELNQ/AAAAAAAAAAI/AAAAAAAAFpc/WOK-9QEPzDQ/s512-c/photo.jpg"
+published: "false"
+---
+
+<div class="css-full-post-content js-full-post-content">
+Большинство найденных мной мануалов по генерации XML из Groovy предлагали либо <a href="http://groovy.codehaus.org/Creating+XML+using+Groovy%27s+MarkupBuilder">вариант очень простой XML-ки</a> (до двух вложенный элементов) или тупо использовать <a href="http://docs.codehaus.org/display/GROOVY/Creating+XML+with+Groovy+and+JDOM">сторонние DOM-библиотеки</a>.<br />Это же не наш метод, как говорила одна моя знакомая: "Настоящие пионеры только стоя и гамаке!" Тем более, что в Groovy, есть все что нужно для счастья. <br />Стандартная поставка содержит два класса для генерации XML: <a href="http://groovy.codehaus.org/api/groovy/xml/MarkupBuilder.html">MarkupBuilder</a> и <a href="http://groovy.codehaus.org/gapi/groovy/xml/StreamingMarkupBuilder.html">StreamingMarkupBuilder</a>. Как говорит документация первый предназначен для генерации простых и небольших документов, второй для больших и сложных. На самом деле единственное отличие между ними, которое удалось найти мне состоит в том, что MarkupBuilder по-умолчанию делает autoindent всех элементов. Кроме того MarkupBuilder принимает факультативные Writer и InputStream.<br />И так вся хитрость состоит в том, что мне нужно было:<br /><ul><li>вставить комментарии в текст xml</li><li> иметь в логике генерации xml ветвления</li></ul>Для первого как оказалось следует использовать MarkupBuilderHelper для второго замыкания.<br /><code class="brush: java"><br /></code>
+</div>

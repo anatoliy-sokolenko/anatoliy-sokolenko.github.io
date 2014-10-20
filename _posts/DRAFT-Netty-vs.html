@@ -1,0 +1,24 @@
+---
+title: "Netty vs"
+layout: "post"
+permalink: "/Netty-vs.html"
+uuid: "1676158771405142354"
+guid: "tag:blogger.com,1999:blog-1763451622132357586.post-1676158771405142354"
+date: "2012-06-03 22:07:00"
+updated: "2012-06-03 22:07:39"
+description: 
+blogger:
+    siteid: "1763451622132357586"
+    postid: "1676158771405142354"
+    comments: "0"
+categories: 
+author: 
+    name: "Anatoliy Sokolenko"
+    url: "https://plus.google.com/100333702426456197655?rel=author"
+    image: "http://img2.blogblog.com/img/b16-rounded.gif"
+published: "false"
+---
+
+<div class="css-full-post-content js-full-post-content">
+<div dir="ltr" style="text-align: left;" trbidi="on"><br />Прогревание<br /><br />Netty NIO<br />Label #Samples Average Median 90% Line Min Max Error % Throughput KB/sec<br /><br /><table><tbody><tr>  <td></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td></tr><tr><td>TOTAL</td>  <td>10000</td>  <td>828</td>  <td>765</td>  <td>1270</td>  <td>252</td>  <td>2952</td>  <td>0.0</td>  <td>562.9045876723895</td>  <td>67.56075411623979</td></tr></tbody></table><br />2000 * 10<br />TOTAL<span class="Apple-tab-span" style="white-space: pre;"> </span>20000<span class="Apple-tab-span" style="white-space: pre;"> </span>1276<span class="Apple-tab-span" style="white-space: pre;"> </span>1239<span class="Apple-tab-span" style="white-space: pre;"> </span>2247<span class="Apple-tab-span" style="white-space: pre;"> </span>252<span class="Apple-tab-span" style="white-space: pre;"> </span>2539<span class="Apple-tab-span" style="white-space: pre;"> </span>5.0E-5<span class="Apple-tab-span" style="white-space: pre;"> </span>669.478476266988<span class="Apple-tab-span" style="white-space: pre;"> </span>80.40521492351209<br /><br />Tomcat OIO<br />Label #Samples Average Median 90% Line Min Max Error % Throughput KB/sec<br /><br /><table><tbody><tr>  <td></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td></tr><tr><td>TOTAL</td>  <td>10000</td>  <td>2132</td>  <td>1837</td>  <td>4318</td>  <td>252</td>  <td>7071</td>  <td>0.047</td>  <td>178.4121320249777</td>  <td>42.22208477363961</td></tr></tbody></table><br /><br />Tomcat NIO<br /><br /><table><tbody><tr>  <td></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td><td><br /></td></tr><tr><td>TOTAL</td>  <td>10000</td>  <td>794</td>  <td>786</td>  <td>1281</td>  <td>254</td>  <td>2612</td>  <td>1.0E-4</td>  <td>585.7544517338332</td>  <td>79.54665579970127</td></tr></tbody></table><br /><br />2000* 10<br /><div>TOTAL<span class="Apple-tab-span" style="white-space: pre;"> </span>20000<span class="Apple-tab-span" style="white-space: pre;"> </span>1315<span class="Apple-tab-span" style="white-space: pre;"> </span>1265<span class="Apple-tab-span" style="white-space: pre;"> </span>2275<span class="Apple-tab-span" style="white-space: pre;"> </span>252<span class="Apple-tab-span" style="white-space: pre;"> </span>3015<span class="Apple-tab-span" style="white-space: pre;"> </span>0.00185<span class="Apple-tab-span" style="white-space: pre;"> </span>651.1264487563485<span class="Apple-tab-span" style="white-space: pre;"> </span>90.52775070403047</div><div><br /></div><div><br /></div><div><br /></div></div>
+</div>

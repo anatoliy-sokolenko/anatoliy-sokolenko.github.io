@@ -1,0 +1,89 @@
+---
+title: "Никогда больше не поверю обзорам"
+layout: "post"
+permalink: "/2010/06/blog-post_29.html"
+uuid: "6852892814650188531"
+guid: "tag:blogger.com,1999:blog-1763451622132357586.post-6852892814650188531"
+date: "2010-06-29 21:57:00"
+updated: "2010-06-30 06:50:50"
+description: 
+blogger:
+    siteid: "1763451622132357586"
+    postid: "6852892814650188531"
+    comments: "4"
+categories: [hardware, off topic]
+author: 
+    name: "Anatoliy Sokolenko"
+    url: "https://plus.google.com/110772590697104801292?rel=author"
+    image: "//lh5.googleusercontent.com/-E71202WELNQ/AAAAAAAAAAI/AAAAAAAAFpc/WOK-9QEPzDQ/s512-c/photo.jpg"
+---
+
+<div class="css-full-post-content js-full-post-content">
+Сдохла у меня WiFi-точка доступа. Событие конечно трагичное, но слезами, как говориться делу не поможешь. Стал искать замену, да так, чтоб с роутером, полазив по железячным сайтам, понял, что мне практически не жить без <a href="http://zyxel.ru/content/catalogue/5/47/847/">ZyXEL NBG334W EE</a>.<br /><a name='more'></a><br />Да и ведь какие ресурсы ее хвалили:<br /><ul><li><a href="http://www.ixbt.com/comm/zyxel-nbg334w.shtml">iXBT</a></li><li> <a href="http://www.3dnews.ru/communication/zyxel_nbg334w_ee">3dnews</a></li><li><a href="http://www.thg.ru/network/zyxel_nbg334w_ee/index.html">tom's hardware guide</a>&nbsp;</li></ul>Мне дабы возненавидеть сей девайс хватило двух часов. И так что он только не вытворял:<br /><ul><li>Перезагружался когда ему вздумается, причем без видимой нагрузки и перегрева (нагрузку кстати нормально держал) </li><li>то подключался по PPPoE с первого раза, то с двадцать третьего (пробовал подключаться ноутом — все фурычит)</li><li>при записи в таблицу управления нагрузкой канала больше трех правил, отказывался их сохранять, выдавая неслыханное "Error writting to flash memory" (ну вот сомневаюсь, что я пару раз поигравшись с настройками, выработал весь ресурс записи)</li><li>в один прекрасный момент, по совершенно не зависящим от объективной реальности обстоятельствам, перестал сохранять вообще все настройки, выдавая "spSave() error code -1" (дружелюбный интерфейс, однако)</li><li>DHCP сервер хоть и правильно раздавал IP-адреса, но вот список арендованных адресов показывал от балды, то в нем есть адрес ноута, который прямо сейчас, стоя у меня на коленях держит IP, то нет</li><li>работа в административной консоли — это вообще сказка. Иногда она притормаживает насколько, что браузер выводит сообщение о таймауте, а при попытке снова зайти в консоль, мы видим "WEB administrator is working" и упаси же бог прервать его сессию, ждем пока истечет. Правда обходной путь тут нашелся быстро, надо "просто" зайти через telnet консоль, тогда WEB сессия умирает. Ну как же все продуманно.</li><li>о динамическая маршрутизация — песня, просто песня. Он то помнил, что основной шлюз у него 192.168.130.1, то просто отправлял пакеты на <a href="http://www.google.com/moon/">Луну</a>.</li><li>и то, что меня в итоге просто накрыло. Формочка выставления текущих даты и времени. В ней область даты состоит из трех полей, ну в принципе стандартно. Вводим по-русски: число, месяц, год — ругается, говорит "Enter value between 0 and 12". Понимаем свою ошибку меняем число и месяц местами, щас, "Enter value between 0 and 12". Открываем любой другой раздел консоли — Guest WLAN, вводим диапазон адресов, жмем "Save". А?! "Enter value between 0 and 12". Выходим из консоли, заходим открываем раздел Firewall, отключаем беднягу. КУДА!!! "Enter value between 0 and 12". Помогла только перезагрузка.&nbsp;</li></ul>Самое приятное, что для этой поделки общества слепых индусских инжинеров, есть целая одна прошивка от 12.02.2010. Первая она же и единственная. Везде обложили.<br />В общем брал я эту приблуду в <a href="http://www.smit.com.ua/">СМИТе</a>, куда благополучно и вернул, они даже возражать не стали, а я уж было хотел раскинуть своим темным прошлым: ч. 1, 3 ст. 8 Закона Украины "О защите прав потребителей", ч. 3 ст. 156-1 Кодекса Украины об административных правонарушениях. Не пришлось.<br /><ul></ul>
+</div>
+<div class="css-full-comments-content js-full-comments-content">
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/05019676306636366465">
+  <div class="css-comment-name js-comment-name">
+    Макс
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2010-06-30T18:23:49.451Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    :) Может экземпляр такой попался?<br />А может стоит взглянуть на ASUS WL-500g (только там куча модификаций есть). Последний ребята хвалили по 3 причинам: <br />а) цена <br />б) USB с возможности натыкать кучу всякой полезности <br />в) ОС и железо, достаточное для запуска торрент клиента
+  </div>
+  <br/>
+</div>
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/11851392340625967147">
+  <div class="css-comment-name js-comment-name">
+    Galak
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2010-07-01T07:01:43.382Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    Да я уже в них потерялся, многие DIR-615 хвалят, нет конечно FTP (да мне он и не нужен особо), зато n и непробиваемый вроде.
+  </div>
+  <br/>
+</div>
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/05019676306636366465">
+  <div class="css-comment-name js-comment-name">
+    Макс
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2010-08-05T19:41:03.828Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    Ну как, выбор сделан?
+  </div>
+  <br/>
+</div>
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/11851392340625967147">
+  <div class="css-comment-name js-comment-name">
+    Galak
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2010-08-15T06:24:56.409Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    да купил тупо самый дешевый Getnet GR-724W и оказалось, и работает нормально, не вис еще ни разу )))
+  </div>
+  <br/>
+</div>
+</div>

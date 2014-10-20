@@ -1,0 +1,23 @@
+---
+title: "OpenSSO и способы шифрования cookie"
+layout: "post"
+permalink: "/2010/06/opensso-cookie.html"
+uuid: "7483261205902618932"
+guid: "tag:blogger.com,1999:blog-1763451622132357586.post-7483261205902618932"
+date: "2010-06-29 08:01:00"
+updated: "2010-06-29 21:11:30"
+description: 
+blogger:
+    siteid: "1763451622132357586"
+    postid: "7483261205902618932"
+    comments: "0"
+categories: [java, opensso, openam]
+author: 
+    name: "Anatoliy Sokolenko"
+    url: "https://plus.google.com/110772590697104801292?rel=author"
+    image: "//lh5.googleusercontent.com/-E71202WELNQ/AAAAAAAAAAI/AAAAAAAAFpc/WOK-9QEPzDQ/s512-c/photo.jpg"
+---
+
+<div class="css-full-post-content js-full-post-content">
+Сколько же способов представления authentication token в cookie поддерживает OpenSSO? Еще до 22:13 25/06/2010 я наивно полагал, что два:<br /><ul><li>простое представление</li><i>AQIC5wM2LY4SfcwBMwqu71bnyaDxA04wXL3kY7oyBfXbiz8=@AAJTSQACMDE=#</i><li>кодированное представление&nbsp;</li><i>AQIC5wM2LY4SfcwBMwqu71bnyaDxA04wXL3kY7oyBfXbiz8%3D%40AAJTSQACMDE%3D%23</i></ul><a name='more'></a><br />И вот на одном из серверов OpenSSO начал нагло входить в dead-loop:<br /><ol><li>приложение проверяет наличие куки</li><li>ее не находить</li><li>пересылает на страничку OpenSSO для аутентификации</li><li>аутентификация проходит</li><li>OpenSSO возвращает пользователя на страничку приложения</li><li>приложение пытается авторизовать пользователя в OpenSSO</li><li>OpenSSO нагло отвечает, что authentication token, извлеченный из cookie не валиден</li><li>мы благополучно возвращаемся к пункту 3.</li></ol>Путем включения логов OpenSSO в <a href="http://wikis.sun.com/display/OpenSSO/UpdateFamProps">режим отладки</a> удалось выяснить, что камнем преткновения является символ пробела, который OpenSSO по каким то соображениям перестал кодировать в %20, а начал кодировать как +. То есть, по сути эта редиска перепутала два формата кодирования <i>urlencode</i> и <i>form-urlencoded</i>. И кодировала в <i>form-urlencoded</i>, при этом тупо продолжая ожидать <i>urlencode</i>. Естественно первое, что пришло на ум поиграться с настройками, включить-выключить, почистить кеши, ан нет, "врагу не сдается наш гордый варяг".<br />И вот методом глубинного гугления было установлено, что есть еще <a href="http://blogs.sun.com/madan/entry/resolvin_cookie_encoding_decoding_issues">третий формат кодирования, поддерживаемый OpenSSO</a>, для включения которого надо всего лишь залезть в <i>Configuration &gt; Servers and Sites &gt; Default Server Settings &gt; Advanced</i> и переключить опцию com.iplanet.am.cookie.c66Encode в true.<br />Третий формат не имеет никакого отношения к HTTP стандартам и заменяет пробел на нижнее подчеркивание (<i>AQIC5wM2LY4SfcxiYQOU_M758mIBoksMWGHC-r-sgA_z5lM.*AAJTSQACMDE.*</i>). Работает вроде пока на ура. Вот такие пироги с куками.
+</div>

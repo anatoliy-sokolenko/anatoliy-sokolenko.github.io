@@ -1,0 +1,89 @@
+---
+title: "Как не надо синхронизировать factory method"
+layout: "post"
+permalink: "/2010/06/factory-method.html"
+uuid: "7809878594235733395"
+guid: "tag:blogger.com,1999:blog-1763451622132357586.post-7809878594235733395"
+date: "2010-06-04 09:05:00"
+updated: "2011-10-19 11:25:44"
+description: 
+blogger:
+    siteid: "1763451622132357586"
+    postid: "7809878594235733395"
+    comments: "4"
+categories: [java, concurrency]
+author: 
+    name: "Anatoliy Sokolenko"
+    url: "https://plus.google.com/110772590697104801292?rel=author"
+    image: "//lh5.googleusercontent.com/-E71202WELNQ/AAAAAAAAAAI/AAAAAAAAFpc/WOK-9QEPzDQ/s512-c/photo.jpg"
+---
+
+<div class="css-full-post-content js-full-post-content">
+На так давно мне рассказали о достаточно интересной методике <a href="http://www.ibm.com/developerworks/java/library/j-dcl.html">double-checked locking</a> и я естественно ринулся в бой применяя ее, буквально все синхронизированный синглтоны были заменены на двойные if. Прирост производительности оказался действительно вполне ощутим.<br /><a name='more'></a><br />И узнал я об этой технике как раз вовремя, ибо очень пригодилось. В один прекрасный момент после окончания очередного куска девелопмента наше web-приложение стало ощутимо тормозить, после прочтения трассы стека стало ясно, что большинство ajp-http потоков ожидают получения блокировки на строке 8 следующего участка кода (естественно оригинал был несколько сложнее): <br /><script src="https://gist.github.com/1298020.js?file=ServiceFactoryImpl_Buggy.java"></script>Казалось бы безопасный участок кода, ан нет, не все так просто. Строка 5 не синхронизированна и потоки могут получить к ней доступ одновременно. Внутри HashMap оперирует сразу несколькими массивами для того, что бы ускорить поиск данных. И соответственно, если исполнение метода get будет прервано, а затем возобновлено на выходе будут не верные данные или того лучше исключение, аля IndexOutOfBoundException. После чего, если потоку все таки повезло и вместо не валидных данных и исключений он получал null, тот благополучно отправлялся к собратьям на блокировку. Уж не знаю почему, но моим потокам везло.<br />Безусловно автор хотел ускорить работу метода для случая, если сервис уже инициализирован. Но делать это следует несколько окуратнее:<br /><script src="https://gist.github.com/1298020.js?file=ServiceFactoryImpl_Correct.java"></script>Как видно вызов метода get будет выполняться почти так же быстро как и без блокировки, ибо все потоки пытающиеся читать будут делать это одновременно, но если появиться поток, которому нужно вызвать put "читателям" придется обождать.<br />В свою очередь, если искомый сервис еще не существует устанавливается блокировка записи (все читатели тормозятся), проверяется не появился ли сервис пока мы блокировались, сервис создается и все потоки разблокируются.
+</div>
+<div class="css-full-comments-content js-full-comments-content">
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/05019676306636366465">
+  <div class="css-comment-name js-comment-name">
+    Макс
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2010-06-27T12:16:39.630Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    День добрый. <br />Этот бы пост, да поместить в раздел The solution указанной статьи (<a href="http://www.ibm.com/developerworks/java/library/j-dcl.html" rel="nofollow">double-checked locking</a>)
+  </div>
+  <br/>
+</div>
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/11851392340625967147">
+  <div class="css-comment-name js-comment-name">
+    Galak
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2010-06-29T07:16:58.558Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    Не получится у IBM статьи авторские. Разве что в комментарии, а мне переводить в лом ))
+  </div>
+  <br/>
+</div>
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/05019676306636366465">
+  <div class="css-comment-name js-comment-name">
+    Макс
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2010-08-05T19:42:30.416Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    :)
+  </div>
+  <br/>
+</div>
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/11737764806072302249">
+  <div class="css-comment-name js-comment-name">
+    CorWin
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2011-04-30T19:44:54.760Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    double-check locking плох еще и тем, что на уровне Java Memory Model он глобально не безопасен. До 5й Java JMM работал не правильно, после - конструкция стала рисковой, т.е. возможны варианты, когда доступ к переменной instance произойдет ранее ее инициализации.<br />Вариант с ручными локами/анлоками действительно хорош и будет работать правильно.<br />А для синглтонов достаточно сделать переменную instance volatile. И таки будет щастье
+  </div>
+  <br/>
+</div>
+</div>

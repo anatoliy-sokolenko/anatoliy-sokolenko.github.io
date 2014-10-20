@@ -1,0 +1,23 @@
+---
+title: "Генерация XML Shema из POJO с использованием Maven"
+layout: "post"
+permalink: "/2010/05/xml-shema-pojo-maven.html"
+uuid: "3886033543297407183"
+guid: "tag:blogger.com,1999:blog-1763451622132357586.post-3886033543297407183"
+date: "2010-05-13 20:55:00"
+updated: "2011-10-19 09:27:52"
+description: 
+blogger:
+    siteid: "1763451622132357586"
+    postid: "3886033543297407183"
+    comments: "0"
+categories: [java, jaxb, maven]
+author: 
+    name: "Anatoliy Sokolenko"
+    url: "https://plus.google.com/110772590697104801292?rel=author"
+    image: "//lh5.googleusercontent.com/-E71202WELNQ/AAAAAAAAAAI/AAAAAAAAFpc/WOK-9QEPzDQ/s512-c/photo.jpg"
+---
+
+<div class="css-full-post-content js-full-post-content">
+Однажды у меня появилась потребность с генерировать XSD по бинам, аннотированным по правилам JAXB, с помощью Maven. Оказалось, что для этих целей существуют только один плагин maven-jaxb-schemagen-plugin, обладающий весьма ограниченной функциональностью (для меня была критичной возможность задавать несколько src путей), и не поддерживаемый с 2007 года.<br /><a name='more'></a><br />Решение оказалось достаточно простым, как говаривал один мой коллега: "Если maven чего то не умеет - надо напрягать ant". Собственно и напрягаем. Для Ant существует прекрасный task: schemagen.<br /><script src="https://gist.github.com/1297833.js?file=pom.xml"></script><br />Подключение com.sun.xml.bind:jaxb-xjc и com.sun:tools необходимо собственно для работы плагина, а вот остальные депенденси могут пригодиться, если конвертируемые бины имеют внешние зависимости. Основной плюс schemagen task состоит в том, что он унаследован от javac task и принимает все его параметры.
+</div>

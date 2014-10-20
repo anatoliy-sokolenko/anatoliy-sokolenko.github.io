@@ -1,0 +1,41 @@
+---
+title: "Управление схемами различных LDAP серверов"
+layout: "post"
+permalink: "/2010/05/ldap.html"
+uuid: "4497904825125786296"
+guid: "tag:blogger.com,1999:blog-1763451622132357586.post-4497904825125786296"
+date: "2010-05-21 19:18:00"
+updated: "2011-10-19 09:40:43"
+description: 
+blogger:
+    siteid: "1763451622132357586"
+    postid: "4497904825125786296"
+    comments: "1"
+categories: [ldap]
+author: 
+    name: "Anatoliy Sokolenko"
+    url: "https://plus.google.com/110772590697104801292?rel=author"
+    image: "//lh5.googleusercontent.com/-E71202WELNQ/AAAAAAAAAAI/AAAAAAAAFpc/WOK-9QEPzDQ/s512-c/photo.jpg"
+---
+
+<div class="css-full-post-content js-full-post-content">
+Результаты небольшого сравнения того как наиболее популярные LDAP сервера поддерживают динамическую загрузку схем.<a name='more'></a><br /><b>1. Active Directory</b><br />Две MMC оснастки, обеспечивающие низкоуровневый доступ к Active Directory по LDAP:<br /><i>schmmgmt.msc</i> — управление схемами (входит в Windows Server Administration Tools Pack);<br /><i>adsiedit.msc</i> — низкоуровневое управление LDAP (входит в Windows Server 2008 Remote Server Administration Tools и Windows Server 2003 Service Pack 2 32-bit Support Tools).<br />И одна консольная приблуда для поддержки LDIF:<br /><i>ldifde.exe</i> — идет в нагрузку к доменному контроллеру<br /><br /><b>2. <a href="https://www.opends.org/wiki/page/HowToExtendTheLDAPSchema">OpenDS</a></b><br />Управление осуществляется по средствам расширения формата <a href="http://en.wikipedia.org/wiki/LDAP_Data_Interchange_Format">LDIF</a>:<br /><script src="https://gist.github.com/1297858.js?file=opends.ldif"></script>То есть возможна загрузка из Java с помощью библиотеки <a href="http://www.openldap.org/jldap/">JLDAP</a>.<br />Кроме того родная Control Panel OpenDS позволяет вполне не плохо управлять схемами.<br /><br /><b>3. OpenLDAP</b><br />Самая кривая реализация — собственный формат, который впрочем близок к формату OpenDS, но заюзать LDIF для него не получиться<br /><script src="https://gist.github.com/1297858.js?file=openldap.txt"></script>
+</div>
+<div class="css-full-comments-content js-full-comments-content">
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="undefined">
+  <div class="css-comment-name js-comment-name">
+    Анонимный
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2010-06-09T08:34:59.408Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    уточнение: в MMC не тулзы, а оснастки. И есть еще одна, для собственно доступа к дереву - dsa.msc<br /><br />jacoby
+  </div>
+  <br/>
+</div>
+</div>

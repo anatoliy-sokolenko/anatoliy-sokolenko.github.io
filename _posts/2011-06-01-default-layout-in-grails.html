@@ -1,0 +1,41 @@
+---
+title: "Default layout in Grails"
+layout: "post"
+permalink: "/2011/06/default-layout-in-grails.html"
+uuid: "276276943925509020"
+guid: "tag:blogger.com,1999:blog-1763451622132357586.post-276276943925509020"
+date: "2011-06-01 18:54:00"
+updated: "2011-06-01 18:54:38"
+description: 
+blogger:
+    siteid: "1763451622132357586"
+    postid: "276276943925509020"
+    comments: "1"
+categories: [sitemesh, templates, grails]
+author: 
+    name: "Anatoliy Sokolenko"
+    url: "https://plus.google.com/110772590697104801292?rel=author"
+    image: "//lh5.googleusercontent.com/-E71202WELNQ/AAAAAAAAAAI/AAAAAAAAFpc/WOK-9QEPzDQ/s512-c/photo.jpg"
+---
+
+<div class="css-full-post-content js-full-post-content">
+Default layout in Grails is evil. Documentation doesn't state any warnings about using default layout, by setting&nbsp;<i>grails.sitemesh.default.layout</i> in Config.groovy. But it is really unpredictable what will happen with plugin's templates if default layout will be specified. In my case I've got an unending web-page loaded inside it-self, instead of comments list, when used commentable plugin.
+</div>
+<div class="css-full-comments-content js-full-comments-content">
+<div class="css-full-comment js-full-comment">
+  <div class="css-comment-user-link js-comment-user-link">
+  <a href="http://www.blogger.com/profile/17379830768015624135">
+  <div class="css-comment-name js-comment-name">
+    Lari
+  </div>
+  </a>
+  <div class="css-comment-date js-comment-date">
+    2011-06-02T05:44:08.872Z
+  </div>
+  </div>
+  <div class="css-comment-content js-comment-content">
+    Must be a bug. Please report in jira and attach a test app. Laro
+  </div>
+  <br/>
+</div>
+</div>
