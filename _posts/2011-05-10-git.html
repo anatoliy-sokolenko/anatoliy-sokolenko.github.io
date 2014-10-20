@@ -11,28 +11,11 @@ blogger:
     siteid: "1763451622132357586"
     postid: "5365623673481931832"
     comments: "1"
-categories: [git, vcs, blog]
+tags: [git, vcs]
 comments: true
+categories: [blog]
 ---
 
 <div class="css-full-post-content js-full-post-content">
 <div style="text-align: justify;">Ветви являются одной из основополагающих функций любой системы контроля версий, однако, зачастую их чрезмерное использование может быть чревато дополнительными накладными расходами на слияние веток.</div><div style="text-align: justify;">В ряде источников упоминалось, что Git разрешает большую часть конфликтов сам, без привлечения пользователя. Я решил проверить на практике, какие именно конфликты, не разрешаемые Subversion, может разрешить Git.</div><a name='more'></a><div style="text-align: justify;">В качестве тестового окружения используем Git-репозиторий&nbsp;на локальной машине. В него поместим два простейших Java-файла.</div> <script src="https://gist.github.com/1298196.js?file=initialization"></script> <div style="text-align: justify;">Создаем ветку experiment и переключаемся на нее</div> <script src="https://gist.github.com/1298196.js?file=checkout"></script> <div style="text-align: justify;"><br /></div><div style="text-align: justify;">Во всех случаях для слияния веток использовалась команда:</div> <script src="https://gist.github.com/1298196.js?file=megre"></script> <div style="text-align: justify;"><br /></div><div style="text-align: justify;">Собственно ниже приведены наиболее типичные конфликты Subversion и как с ними себя повел Git:</div><div style="text-align: justify;">Git не разрулил конфликты</div><ul><li style="text-align: justify;">Вставка строк в одну и туже позицию</li><li style="text-align: justify;">Перемещение блока текста с изменением и вставка в ветке на его место другого блока</li></ul><div><div style="text-align: justify;">Git разрулил конфликты&nbsp;</div></div><div><ul><li style="text-align: justify;">Переименование/перемещение файла средствами OS</li><li style="text-align: justify;">Переименование/перемещение файла через git mv</li><li style="text-align: justify;">Перемещение блока текста без изменения и вставка в ветке на его место другого блока</li><li style="text-align: justify;">Изменение пробелов</li><li style="text-align: justify;">Одинаковые изменения, сделанные в двух ветках</li></ul><div><div style="text-align: justify;">И действительно, Git с задачей обработки конфликтов между ветками справляется намного лучше. Думаю не последнюю роль в этом играет то, что Git не оперирует понятием директории/папки, он анализирует только файлы и пути, а потому количество объектов для конфликтов резко снижается. Не говоря уже об обязательном git stash перед слиянием, что позволяет избежать дополнительных конфликтов и одновременно повышает атомарность комитов.</div></div></div>
-</div>
-<div class="css-full-comments-content js-full-comments-content">
-<div class="css-full-comment js-full-comment">
-  <div class="css-comment-user-link js-comment-user-link">
-  <a href="http://www.blogger.com/profile/05019676306636366465">
-  <div class="css-comment-name js-comment-name">
-    Макс
-  </div>
-  </a>
-  <div class="css-comment-date js-comment-date">
-    2011-09-28T19:34:51.624Z
-  </div>
-  </div>
-  <div class="css-comment-content js-comment-content">
-    Нь дя... Хочу гит!
-  </div>
-  <br/>
-</div>
 </div>

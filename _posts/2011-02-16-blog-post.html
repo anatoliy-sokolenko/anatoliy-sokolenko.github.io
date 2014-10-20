@@ -11,28 +11,11 @@ blogger:
     siteid: "1763451622132357586"
     postid: "4162018385651196954"
     comments: "1"
-categories: [java, exceptions, blog]
+tags: [java, exceptions]
 comments: true
+categories: [blog]
 ---
 
 <div class="css-full-post-content js-full-post-content">
 Давно заметил, что "хорошего" и "плохого" программиста можно достаточно просто отличить по двум показателям:<br /><ul><li>его отношению к наименованию классов/методов/переменных и прочих составных элементов кода</li><li>отношения к исключительным ситуациям</li></ul><a name='more'></a>И если перлов на тему первого индикатора в интернете много, то вот второй критерий исследован не достаточно. Об этом и поговорим.<br />Программист "плохой", исключений всячески избегает и боится, он:<br /><ul><li>практически никогда не объявляет собственных исключений, везде используют RuntimeException или, если повезет, Exception;</li><li>если приходится работать с чужими исключениями -- тупо их подавляет;</li><li>почти всегда отлавливает Throwable или Exception;</li><li>забывает собственно отработать исключение;</li><li>не разграничивает исключения в блоке catch;</li><li>не понимает принципиальной разницы между контролируемыми и неконтролируемыми исключениями;</li><li>творит пугающие вещи в блоке finally.</li></ul>Пожалуй на вскидку все.<br /><br />И в качестве демонстрации, приведу небольшие наглядные пособия того, как не надо и, как надо обращаться с исключениями, взятые из жизни. В чем собственно состоит отличие предлагается выбрать самому читателю.<br /><br />Не правильно<br /><script src="https://gist.github.com/1298147.js?file=A_Wrong.java"></script>Правильно<br /><script src="https://gist.github.com/1298147.js?file=A_Correct.java"></script><br />Не правильно<br /><script src="https://gist.github.com/1298147.js?file=B_Wrong.java"></script>Правильно<br /><script src="https://gist.github.com/1298147.js?file=B_Correct.java"></script><br />Не правильно<br /><script src="https://gist.github.com/1298147.js?file=C_Wrong.java"></script>Правильно<br /><script src="https://gist.github.com/1298147.js?file=C_Correct.java"></script><br />Не правильно<br /><script src="https://gist.github.com/1298147.js?file=D_Wrong.java"></script>Правильно<br /><script src="https://gist.github.com/1298147.js?file=D_Correct.java"></script><br />P.S. в случае с "правильными" вариантами для Hibernate используется декларативное управление транзакциями, а потому не закрываемая сессия и пробрасываемые исключения использованны преднамеренно.
-</div>
-<div class="css-full-comments-content js-full-comments-content">
-<div class="css-full-comment js-full-comment">
-  <div class="css-comment-user-link js-comment-user-link">
-  <a href="http://www.blogger.com/profile/11737764806072302249">
-  <div class="css-comment-name js-comment-name">
-    CorWin
-  </div>
-  </a>
-  <div class="css-comment-date js-comment-date">
-    2011-04-30T19:33:42.048Z
-  </div>
-  </div>
-  <div class="css-comment-content js-comment-content">
-    +100500. Зрелость программиста начинается тогда, когда он понимание назначение исключений. Откровенно говоря, rethrow third-party exceptions нужно требовать от неофитов как обязательную практику. Пусть хотя бы пробрасывают те, что есть, хрен с ним, что желательно обернуть в свои.<br />И еще, должен заметить, что использование стандартных исключений для иллюстрации собственного кода не всегда есть зло или признак не зрелости. Это просто следующий этап, 60% случаев могут быть покрыты стандартными исключениями объявлеными в JDK. Свои исключения, тупо наследующие Exception/RuntimeException следует писать очень осторожно, только в том случае, если ты реально хочешь сказать что-то кастомное. Если ты просто не хочешь возвращать NULL, то InstantiationException вполне достаточно. Ну и тому подобное.
-  </div>
-  <br/>
-</div>
 </div>

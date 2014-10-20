@@ -11,44 +11,11 @@ blogger:
     siteid: "1763451622132357586"
     postid: "7465867751547244566"
     comments: "2"
-categories: [maven, blog]
+tags: [maven]
 comments: true
+categories: [blog]
 ---
 
 <div class="css-full-post-content js-full-post-content">
 <div style="text-align: justify;">Очень уважаю эту систему сборки за ее гибкость, совмещенную с простотой.</div><div style="text-align: justify;">И вот 8 октября 2010 года свершилось великое событие — вышла ее третья версия.</div><div style="text-align: justify;">Правда из <a href="http://maven.apache.org/release-notes-3.0.x.html">Release Notes</a> на сайте Maven мне так и не удалось определить полный набор возможностей, введенных в новой версии, потому я установил себе новую версию, запустил браузер и принялся исследовать. Ниже прилагается список найденных мной опытным или гугловым путем нововведений.</div><a name='more'></a><br /><div style="text-align: justify;">Не смотря на <a href="http://www.wakaleo.com/blog/236-writing-your-pom-files-in-groovy-a-sneek-preview-of-maven-3s-polyglot-features">множество публикаций</a> никакой поддержки не XML конфигураций в ядре Maven я так и обнаружил. Зато, как выяснилось, разработчики переписали <a href="http://www.sonatype.com/people/2009/11/maven-3x-paving-the-desire-lines-part-two/">ModelReader</a>, что должно значительно упростить разработку плагинов, поддерживающих дополнительные языки для pom файлов. </div><div style="text-align: justify;">Собственно разработкой проекта поддержки дополнительных конфигурационных языков для Maven занимается корпорация Sonatype в своем проекте <a href="http://polyglot.sonatype.org/index.html">Polyglot Maven</a>. На сайте проекта мне удалось обнаружить целый один дистрибутив версии 0.8-SNAPSHOT, который по сути является хакнутой версией самого Maven :)</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><a href="https://cwiki.apache.org/confluence/display/MAVEN/Parallel+builds+in+Maven+3">Параллельная сборка</a>. Вот она действительно работает и действительно включена в новую версию. Maven научился запускать несколько потоков, параллельно осуществляющих сборку независимых модулей приложения.</div><div style="text-align: justify;">Чтобы запустить сборку в несколько потоков, необходимо добавить к командной строке параметр <i>-T</i>. Так, например, следующая команда запустит сборку в три потока:</div><blockquote>mvn -T 3 clean install</blockquote><div style="text-align: justify;">Более того, можно указать, сколько вы хотите создать потоков на одно ядро процессора, например, следующая команда запустит по два потока на ядро:</div><blockquote>mvn -T 2C clean install</blockquote><div style="text-align: justify;">Единственная заковыка состоит в том, что плагины, используемые при сборке, должны такую многопоточность поддерживать (быть аннотированными @threadSafe), а иначе возможны неожиданные сюрпризы. Maven предупредит об этом и честно продолжит сборку.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Поддержка аннотаций для плагинов. Полезно только для разработчиков этих самых плагинов — часть конфигурации из plugin.xml была перенесена в аннотации.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Embedding. Фитча, реализованная в основном для IDE и разнообразных хаков — позволяет  интегрировать ядро Maven в приложение. Для этой цели в Maven был заменен  IoC контейнер: Plexus умер, да здравствует Google Guice. Собственно  Polyglot Maven работает именно на механизме встраивания Maven в себя. </div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Изменения в жизненном цикле. </div><div style="text-align: justify;">Теперь плагины могут <a href="http://jira.codehaus.org/browse/MNG-4634">добавлять собственные фазы в жизненный цикл сборки</a>, поэкспериментировать как следует, к сожалению, не удалось.</div><div style="text-align: justify;">Кроме того, сторонние системы получили возможность регистрироваться слушателями на события жизненного цикла и получать уведомления о них.</div><div style="text-align: justify;">Сам жизненный цикл был поделен на три фазы: подготовительный жизненный цикл, собственно жизненный цикл сборки и жизненный цикл окончания сборки. Все опять же во имя встраивания.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Улучшена поддержка OSGi. Опробовать не удалось, однако, из найденных источников следует, что благодаря двум предыдущим нововведениям Maven научился стартовать внутри себя Equinox, через Tycho-плагин и буквально передавать тому управление всеми зависимостями при сборке проекта. Звучит достаточно круто. Учитывая, что меня давно мучил вопрос о совместимости Maven и OSGi.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Был полностью переписан клиент для Maven репозиториев, теперь он модно называется Mercury и полностью поддерживает SSL и WebDAV. </div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Улучшение производительности. Разработчики Maven обещали прирост в 50-400%. Однако, проведя небольшое сравнение сборок одного и того же проекта обоими версиями Maven, большого прироста производительности я не ощутил. А скорее стало даже медленнее: время сборки тестового проекта увеличилось на 11 секунд, с 5:43 до 5:54. Включение многопоточной сборки (по потоку на каждое из 2 ядер) улучшило результат, но не на много — сборка прошла за 5:20.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Изменился консольный вывод и валидация pom.xml — они стали более разговорчивы. Теперь Maven по умолчанию уведомляет о том, что не была явно указана версия плагина, хотя знает откуда ее скачать. Фитча сомнительной полезности.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Больше не поддерживается бывший deprecated еще с Maven 2 файл profiles.xml. Сам им честно не разу не пользовался.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Наконец появилось вменяемое правило использования версий плагинов. Теперь вместо LATEST (который свободно может быть SNAPSHOT) берется RELEASE версия.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Последняя фича пожалуй моя любимая. Теперь Maven не просто выкидывает сообщение об ошибке при падении сборки, но еще и выдает ссылку на wiki, где можно ознакомится с деталями проблемы. Очень полезно для тех, кого забанили в гугле. </div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Из неожиданностей могу добавить тот факт, что директорией локального репозитория по умолчанию почему-то осталась ~/.m2/repository :) Просмотрели видать. </div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">В общем впечатление от нового релиза двоякое: с одной стороны он обещал принести больше всего изменений со времен Maven 2.0 и в принципе принес, но с другой — большинство из этих изменений носят чисто косметический или технический характер и действительно необходимы лишь любителям "покопаться в кишках".</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">P.S. <a href="https://cwiki.apache.org/MAVEN/maven-3x-plugin-compatibility-matrix.html">Таблица совместимости плагинов с Maven 3.0</a>.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Дабы не быть плагиатчиком прилагаю список некоторых дополнительных источников, ссылки на которые не приведены в заметке:</div><ul style="text-align: justify;"><li style="text-align: justify;"><a href="http://www.blogger.com/goog_740294093">Maven Reloaded (video)</a></li><li style="text-align: justify;"><a href="http://raibledesigns.com/rd/entry/what_s_new_in_maven">What's New in Maven 3.0 with Matthew McCullough</a></li><li style="text-align: justify;"><a href="http://www.sonatype.com/people/2010/10/maven-3-0-has-landed/%20">Apache Maven 3.0 has landed!</a></li><li style="text-align: justify;"><a href="http://jlorenzen.blogspot.com/2010/07/upgrading-to-maven-3.html">Upgrading to Maven 3</a></li></ul>
-</div>
-<div class="css-full-comments-content js-full-comments-content">
-<div class="css-full-comment js-full-comment">
-  <div class="css-comment-user-link js-comment-user-link">
-  <a href="http://www.blogger.com/profile/05019676306636366465">
-  <div class="css-comment-name js-comment-name">
-    Макс
-  </div>
-  </a>
-  <div class="css-comment-date js-comment-date">
-    2010-10-18T17:24:35.457Z
-  </div>
-  </div>
-  <div class="css-comment-content js-comment-content">
-    Круть! Я так понял, что спать можно спокойно - революции не будет :)
-  </div>
-  <br/>
-</div>
-<div class="css-full-comment js-full-comment">
-  <div class="css-comment-user-link js-comment-user-link">
-  <a href="http://www.blogger.com/profile/11851392340625967147">
-  <div class="css-comment-name js-comment-name">
-    Galak
-  </div>
-  </a>
-  <div class="css-comment-date js-comment-date">
-    2010-10-19T19:01:10.132Z
-  </div>
-  </div>
-  <div class="css-comment-content js-comment-content">
-    Ну как бы революция уже была во второй версии. Теперь осталось почивать на лаврак и допиливать недопилы.
-  </div>
-  <br/>
-</div>
 </div>

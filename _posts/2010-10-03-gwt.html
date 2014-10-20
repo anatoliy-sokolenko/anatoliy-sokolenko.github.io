@@ -11,44 +11,11 @@ blogger:
     siteid: "1763451622132357586"
     postid: "3872258295166107633"
     comments: "2"
-categories: [оптимизация, gwt, blog]
+tags: [оптимизация, gwt]
 comments: true
+categories: [blog]
 ---
 
 <div class="css-full-post-content js-full-post-content">
 Пост из разряда для себя на заметку. Просмотрев видео с Google I/O 2010 нашел массу интересных идей.<br /><a name='more'></a>Простые приемы оптимизации в GWT:<br /><ol><li><i>Отключение вывода трассы стека для исключений</i> — позволяет GWT-компилятору увеличить количество безымянных методов.<br />Для отключения вывода трассы стека в GWT дескрипторе, следует установить следующую переменную:<br /><blockquote>&lt;set-property name="compiler.stackMode" value="strip"/&gt;</blockquote></li><li><i>Удаление метаданных о классе</i> — позволяет сэкономить на объеме скомпилированного объявления типа. Для его активации необходимо запустить GWT-компилятор с параметром:<br /><blockquote>-XdisableClassMetadata </blockquote></li><li><i>Отключение проверки соответствия типов при приведении</i> — эффект очевиден экономия времени за счет отсутствия выполнения одной лишней операции. Включается так же через параметры компилятора:<br /><blockquote>-XdisableCastChecking</blockquote></li><li><i>Обфускация CSS ресурсов</i>. При использовании UiBinder и CssResource, GWT умеет сокращать объем данных, описывающих каскадные стили, активировать такую фитчу можно через переменную дескриптора:<br /><blockquote>&lt;set-configuration-property name="CssResource.obfuscationPrefix" value="empty"/&gt;</blockquote></li>Если о предыдущих оптимизациях я знал, то следующая стала для меня откровением. <li><i>Обфускация типов в GWT RPC.</i> По-умолчанию GWT RPC содержат полную информацию о передаваемых типах, например:<br /><blockquote>//OK[0.0,1.0,6,5,4,3,1,2,1,["com.sokolenko.jcrconsole.shared.protocol.GetNodesResult/3275626503","java.util.ArrayList/3821976829","com.sokolenko.jcrconsole.shared.protocol.NodeInfo/3439158146","","/","rep:root"],0,5]</blockquote>Немалый объем информации передается просто так, его можно исключить, подключив к GWT дескриптору модуль RemoteServiceObfuscationTypeNames:<br /><blockquote>&lt;inherits name="com.google.gwt.user.RemoteServiceObfuscateTypeNames"/&gt;</blockquote></li><li><i>Отложенная загрузка GWT приложения</i>. GWT приложение совершенно не обязательно должно грузиться одним большим "жирным" куском, его загрузку вполне можно разделить на несколько частей. Правда появилась эта полезная фитча только в версии 2.0 (как в прочем и большинство описанных выше оптимизаций).<br />По-сути для отложенной загрузки частей приложения их вызов необходимо завернуть в RunAsyncCallback:<br /><script src="https://gist.github.com/1298111.js?file=gistfile1.java"></script><br />Кроме того поддерживается фоновая загрузка, подробнее в <a href="http://code.google.com/intl/en/webtoolkit/doc/latest/DevGuideCodeSplitting.html">Документации для разработчиков</a>.<br />Отличным механизмом для выявления узких мест в процессе загрузки GWT-приложения являются <a href="http://code.google.com/intl/en/webtoolkit/doc/latest/DevGuideCompileReport.html">отчеты компилятора</a>, которые составляются, если поледний был запущен с параметрами:<br /><blockquote>-compileReport -XsoycDetailed</blockquote></li></ol><br />Все описанные отпимизации безусловно применимы для продакшен версии приложения. На стадии разработки они скорее вредят, чем помогают. <br />P.S. Собственно первоисточники<br /><object height="340" width="560"><param name="movie" value="http://www.youtube.com/v/qT6ZsQBM7kY?fs=1&amp;hl=ru_RU"> </param><param name="allowFullScreen" value="true"> </param><param name="allowscriptaccess" value="always"> </param><embed src="http://www.youtube.com/v/qT6ZsQBM7kY?fs=1&amp;hl=ru_RU" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object><br /><br /><object height="340" width="560"><param name="movie" value="http://www.youtube.com/v/USlUYkBHiHA?fs=1&amp;hl=ru_RU"> </param><param name="allowFullScreen" value="true"> </param><param name="allowscriptaccess" value="always"> </param><embed src="http://www.youtube.com/v/USlUYkBHiHA?fs=1&amp;hl=ru_RU" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
-</div>
-<div class="css-full-comments-content js-full-comments-content">
-<div class="css-full-comment js-full-comment">
-  <div class="css-comment-user-link js-comment-user-link">
-  <a href="http://www.blogger.com/profile/14469576646912673969">
-  <div class="css-comment-name js-comment-name">
-    nordlig ulv
-  </div>
-  </a>
-  <div class="css-comment-date js-comment-date">
-    2011-05-05T11:33:14.442Z
-  </div>
-  </div>
-  <div class="css-comment-content js-comment-content">
-    Спасибо за полезные советы. Только мне кажется не -XdisableClassChecking, а -XdisableCastChecking
-  </div>
-  <br/>
-</div>
-<div class="css-full-comment js-full-comment">
-  <div class="css-comment-user-link js-comment-user-link">
-  <a href="http://www.blogger.com/profile/11851392340625967147">
-  <div class="css-comment-name js-comment-name">
-    Galak
-  </div>
-  </a>
-  <div class="css-comment-date js-comment-date">
-    2011-09-27T07:03:10.191Z
-  </div>
-  </div>
-  <div class="css-comment-content js-comment-content">
-    Да вы правы. Ошибочка вышла, спасибо.
-  </div>
-  <br/>
-</div>
 </div>

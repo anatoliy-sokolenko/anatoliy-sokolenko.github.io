@@ -11,44 +11,11 @@ blogger:
     siteid: "1763451622132357586"
     postid: "8307570701478000655"
     comments: "2"
-categories: [java, gwt, spring, blog]
+tags: [java, gwt, spring]
 comments: true
+categories: [blog]
 ---
 
 <div class="css-full-post-content js-full-post-content">
 Решил я как то раз от нечего делать прикрутить Spring к GWT. Начал естественно с поиска готовых решений.<br /><a name='more'></a><br />В интернете масса рецептов по интеграции GWT и Spring:<br /><ul><li><a href="http://software-wonders.blogspot.com/2007/02/it-is-not-mistery-that-google-web.html">http://software-wonders.blogspot.com/2007/02/it-is-not-mistery-that-google-web.html</a></li><li><a href="http://docs.google.com/View?docid=dw2zgx2_25492p5qxfq">http://docs.google.com/View?docid=dw2zgx2_25492p5qxfq</a></li><li>и другие.</li></ul><br />Большинство найденных решений использовали Spring 2.5, чудесным образом игнорируя его возможности по работе с аннотациями и предпочитая дублировать заглушку над gwt-сервисом для каждого gwt-сервиса, что превращало spring-контекст просто во 2 том "Войны и мира" без перевода французских диалогов.<br />Мое решение было проверено на Spring 3.0, но теоретически, используя аннотации Spring 2.5 его можно повторить. Собственно, решение состоит в создании абстрактного класса, который будет являться родителем всех остальных gwt-сервисов и сам наследует&nbsp;<i>RemoteServiceServlet</i>:<br /><script src="https://gist.github.com/1298032.js?file=GwtSpringController.java"></script>Как видно невооруженным глазом класс получает от спринга <i>ServletContext</i> по средствам autowiring, собственно и вся хитрость.<br />Пример сервиса, построенного на таком подходе:<br /><script src="https://gist.github.com/1298032.js?file=DateServiceImpl.java"></script>Единственный недостаток — приходиться в каждом классе объявлять аннотацию <i>@Controller</i>, очень странно, что Spring ее не подхватывает при наследовании, но это всяко лучше, чем дублировать bean defenition по тридцать раз.
-</div>
-<div class="css-full-comments-content js-full-comments-content">
-<div class="css-full-comment js-full-comment">
-  <div class="css-comment-user-link js-comment-user-link">
-  <a href="http://www.blogger.com/profile/07321668825216066672">
-  <div class="css-comment-name js-comment-name">
-    Serg
-  </div>
-  </a>
-  <div class="css-comment-date js-comment-date">
-    2010-10-10T08:44:32.847Z
-  </div>
-  </div>
-  <div class="css-comment-content js-comment-content">
-    День добрый. <br />Спасибо за разъяснения кодом. В Спринг только начинаю вникать, посему нельзя ли взнялгуть на все XML-конфиги, необходимые для данной интеграции? В идеале, на примере Tomcat 6.XX.
-  </div>
-  <br/>
-</div>
-<div class="css-full-comment js-full-comment">
-  <div class="css-comment-user-link js-comment-user-link">
-  <a href="undefined">
-  <div class="css-comment-name js-comment-name">
-    Анонимный
-  </div>
-  </a>
-  <div class="css-comment-date js-comment-date">
-    2012-02-12T18:41:53.055Z
-  </div>
-  </div>
-  <div class="css-comment-content js-comment-content">
-    спасибо!
-  </div>
-  <br/>
-</div>
 </div>
