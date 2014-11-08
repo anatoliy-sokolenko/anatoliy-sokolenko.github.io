@@ -5,8 +5,7 @@ locale: en_US
 description: #Describe your website here.
 logo: #site-logo.png
 search: true
-url: 
-
+url: http://blog.sokolenko.me
 
 # Jekyll configuration
 
