@@ -26,8 +26,8 @@ For lazy readers full listing is here (for curious detailed explanation is provi
     -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark
     -XX:+PrintGCDateStamps -verbose:gc -XX:+PrintGCDetails -Xloggc:"<path to log>"
     -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M
-    -Dsun.net.inetaddr.ttl=3600
-    -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=\<path to dump>`date`.hprof
+    -Dsun.net.inetaddr.ttl=<TTL in seconds>
+    -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=<path to dump>`date`.hprof
     -Djava.rmi.server.hostname=<external IP>
     -Dcom.sun.management.jmxremote.port=<port> 
     -Dcom.sun.management.jmxremote.authenticate=false 
@@ -47,8 +47,8 @@ For lazy readers full listing is here (for curious detailed explanation is provi
     -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark
     -XX:+PrintGCDateStamps -verbose:gc -XX:+PrintGCDetails -Xloggc:"<path to log>"
     -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M
-    -Dsun.net.inetaddr.ttl=3600
-    -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=\<path to dump>`date`.hprof
+    -Dsun.net.inetaddr.ttl=<TTL in seconds>
+    -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=<path to dump>`date`.hprof
     -Djava.rmi.server.hostname=<external IP>
     -Dcom.sun.management.jmxremote.port=<port> 
     -Dcom.sun.management.jmxremote.authenticate=false 
@@ -148,12 +148,16 @@ GC log files rotation makes analysis of garbage collection problems easier, also
 ### DNS Caching
 
 ```
--Dsun.net.inetaddr.ttl=3600
+-Dsun.net.inetaddr.ttl=<TTL in seconds>
 ```
 
-Number of seconds during which DNS records will be cached in Java VM. Default behavious of JVM is to cache forever, which does not feet server application needs, as you would not want to restart server each time, when IP has changed in DNS record. Commonly recommended option is to disable DNS caching at all, which can be reason for performance degradation. Requests to DNS are performed in **synchorized** block and only one request is performed in any point in time. Thus, if your application is havily utilizing network it will experience saturation on DNS requests. Better solution is to cache for 1 hour (3600 seconds), which is default TTL for most DNS servers. This option is convinient to use, but **networkaddress.cache.ttl** specified in %JRE%\lib\security should be considered as better solution, at least from official documentation prospective.
+Number of seconds during which DNS records will be cached in Java VM. Default behavious of JVM is to cache forever, which does not feet server application needs, as you would not want to restart server each time, when IP has changed in DNS record. Commonly recommended option is to disable DNS caching at all, which can be reason for performance degradation. Requests to DNS are performed in synchorized block and only one request is performed in any point in time. Thus, if your application is havily utilizing network it will experience saturation on DNS requests, so TTL value ```0``` should **never** be used.
 
-[Learn more](http://www.oracle.com/technetwork/java/javase/6u4-140071.html).
+Better solution is to cache for 1 hour (```3600``` seconds), which is default TTL for most DNS servers. This mean that system your application is interacting with have to guaranty that two different IPs will continue to work properly during 1 hour, otherwise lower TTL value should be chosen. It should always be reasonable to prevent possible contention of requests to DNS. 
+
+This option is convinient to use, but ```networkaddress.cache.ttl``` specified in %JRE%\lib\security should be considered as better solution, at least from official documentation prospective.
+
+[Learn more](https://docs.oracle.com/javase/7/docs/technotes/guides/net/properties.html).
 
 ### Dump on Out of Memory
 
