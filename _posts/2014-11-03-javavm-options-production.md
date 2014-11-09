@@ -151,7 +151,7 @@ GC log files rotation makes analysis of garbage collection problems easier, also
 -Dsun.net.inetaddr.ttl=3600
 ```
 
-Number of seconds during which DNS records will be cached in Java VM. Default behavious of JVM is no caching, which can be reason for performance degradation. Requests to DNS are performed in **synchorized** block and only one request is performed in any point in time. Thus, if your application is havily utilizing network it will experience saturation on DNS requests. 3600 stands for 1 hours, which is default TTL for most DNS servers. This option is convinient to use, but **networkaddress.cache.ttl** specified in %JRE%\lib\security should be considered as better solution, at least from official documentation prospective.
+Number of seconds during which DNS records will be cached in Java VM. Default behavious of JVM is to cache forever, which does not feet server application needs, as you would not want to restart server each time, when IP has changed in DNS record. Commonly recommended option is to disable DNS caching at all, which can be reason for performance degradation. Requests to DNS are performed in **synchorized** block and only one request is performed in any point in time. Thus, if your application is havily utilizing network it will experience saturation on DNS requests. Better solution is to cache for 1 hour (3600 seconds), which is default TTL for most DNS servers. This option is convinient to use, but **networkaddress.cache.ttl** specified in %JRE%\lib\security should be considered as better solution, at least from official documentation prospective.
 
 [Learn more](http://www.oracle.com/technetwork/java/javase/6u4-140071.html).
 
