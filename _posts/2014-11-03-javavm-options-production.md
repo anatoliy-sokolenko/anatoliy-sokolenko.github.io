@@ -93,7 +93,7 @@ Explicitely define size of the young generation.
 -XX:SurvivorRatio=<ratio>
 ```
 
-Ration which determines size of the survivour space relatively to young generation size. Ratio can be calculated using following formula:
+Ratio which determines size of the survivour space relatively to young generation size. Ratio can be calculated using following formula:
     
 <script type="math/tex; mode=display" id="MathJax-Element-1">
 \begin{aligned}
@@ -158,7 +158,7 @@ Number of seconds during which DNS records will be cached in Java VM. Default be
 ### Dump on Out of Memory
 
 ```
--XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=\<path to dump>`date`.hprof
+-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=<path to dump>`date`.hprof
 ```
 
 If your application would ever fail with out-of-memory in production, you would not want to wait for another chance to reproduce the problem. These options instruct Java VM to dump memory into file, when OOM occurred. It can cause considerable pauses on big heaps during OOM event. However, if Java VM is at OOM already, collecting as much information about the issue is more important than trying to serve traffic with completely broken application. We are also making sure the dump would be created with name unique per application start time (this is requeired because Java VM will fail to overwrite existing file).
