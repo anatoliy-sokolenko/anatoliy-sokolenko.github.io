@@ -151,11 +151,12 @@ GC log files rotation makes analysis of garbage collection problems easier, also
 -Dsun.net.inetaddr.ttl=<TTL in seconds>
 ```
 
-Number of seconds during which DNS records will be cached in Java VM. Default behavious of JVM is to cache forever, which does not feet server application needs, as you would not want to restart server each time, when IP has changed in DNS record. Commonly recommended option is to disable DNS caching at all, which can be reason for performance degradation. Requests to DNS are performed in synchorized block and only one request is performed in any point in time. Thus, if your application is havily utilizing network it will experience saturation on DNS requests, so TTL value ```0``` should **never** be used.
+Number of seconds during which DNS record will be cached in Java VM. Default behaviour of Java VM 6 was to cache forever, which does not feet server application needs, as you would not want to restart server each time, when IP has changed in DNS record. It has been changed in Java VM 7 to cache for 30 seconds, but only if security manager is not installed. Depending on version of Java VM and presence of security manager DNS records still can be cached infinitely.
+Commonly recommended option is to disable DNS caching at all, which can be reason for performance degradation. Requests to DNS are performed in synchorized block and only one request is performed in any point in time. Thus, if your application is havily utilizing network it will experience saturation on DNS requests, so TTL value ```0``` should **never** be used.
 
-Better solution is to cache for 1 hour (```3600``` seconds), which is default TTL for most DNS servers. This mean that system your application is interacting with have to guaranty that two different IPs will continue to work properly during 1 hour, otherwise lower TTL value should be chosen. It should always be reasonable to prevent possible contention of requests to DNS. 
+Better solution is to cache for reasonable not long period, for example 1 minute (```60``` seconds). This mean that system your application is interacting with have to guaranty that two different IPs will continue to work properly during this 1 minute, otherwise lower TTL value should be chosen. It should always be reasonable (not equal to ```0```) to prevent possible contention of requests to DNS. 
 
-This option is convinient to use, but ```networkaddress.cache.ttl``` specified in %JRE%\lib\security should be considered as better solution, at least from official documentation prospective.
+This option is convinient to use, but ```networkaddress.cache.ttl``` specified in %JRE%/lib/security/java.security should be considered as better solution, at least from official documentation prospective.
 
 [Learn more](https://docs.oracle.com/javase/7/docs/technotes/guides/net/properties.html).
 
