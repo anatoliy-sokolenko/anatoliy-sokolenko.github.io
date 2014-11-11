@@ -7,6 +7,7 @@ tags: [java, production]
 comments: true
 share: true
 categories: [blog]
+mathjax: true
 ---
 
 This post is a cheatsheet with enumeration of options, which should be always used to configure Java Virtual Machine for **Web-oriented** server applications in production or production-like environments.
