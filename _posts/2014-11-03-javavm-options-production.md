@@ -94,7 +94,7 @@ Explicitely define size of the young generation.
 -XX:SurvivorRatio=<ratio>
 ```
 
-Ratio which determines size of the survivour space relatively to young generation size. Ratio can be calculated using following formula:
+Ratio which determines size of the survivour space relatively to eden size. Ratio can be calculated using following formula:
     
 <script type="math/tex; mode=display" id="MathJax-Element-1">
 \begin{aligned}
