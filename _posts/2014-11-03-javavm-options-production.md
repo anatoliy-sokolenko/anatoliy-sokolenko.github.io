@@ -188,7 +188,7 @@ IP address, which would be embedded into RMI stubs sent to clients. Later client
 
 ```-Dcom.sun.management.jmxremote``` option is not required starting from Java VM 6, however to make JMX available for remote access specific listen port should be provided. Later this port can be used to connect using any JMX tool (e.g. [VisualVM](http://visualvm.java.net/) or [Java Mission Control](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)).
 
-Also to reduce additional trobelms with connecting disable standard authentication, but be sure that only authorized users can connect to environment using firewall. If for security reasons you still want to control access via standard mechanism [learn more](http://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html).
+Also to reduce additional troubles with connecting disable standard authentication, but be sure that only authorized users can connect to environment using firewall. If for security reasons you still want to control access via standard mechanism [learn more](http://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html).
 
 ### P.S.
 Many options that were previously very useful with updates in Java VM (specifically release of Java 7) are preconfigured by default:
