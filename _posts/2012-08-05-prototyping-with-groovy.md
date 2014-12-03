@@ -13,6 +13,7 @@ blogger:
     comments: "0"
 tags: [prototype, groovy]
 comments: true
+share: true
 categories: [blog]
 ---
 
