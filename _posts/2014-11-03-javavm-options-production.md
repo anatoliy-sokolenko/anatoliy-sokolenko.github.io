@@ -10,7 +10,7 @@ categories: [blog]
 mathjax: true
 ---
 
-This post is a cheatsheet with enumeration of options, which should be always used to configure Java Virtual Machine for **Web-oriented** server applications in production or production-like environments.
+This post is a cheatsheet with enumeration of options, which should be always used to configure Java Virtual Machine for **Web-oriented** server applications (i.e. Web Front-End) in production or production-like environments.
 
 For lazy readers full listing is here (for curious detailed explanation is provided below):
 
@@ -117,7 +117,7 @@ As response time is critical for server application concurrent collector feets b
 -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=<percent>
 ```
 
-By default CMS GC uses set of heuristic rules to trigger garbage collection. This makes GC less predictable and usually tends to delay collection until old generation is almost occupied. Initiating it in advance allows to complete collection before old generation is full and thus avoid Full GC (i.e. stop-the-world pause). ```-XX:+UseCMSInitiatingOccupancyOnly``` prevent usage of GC heuristics. ```-XX:CMSInitiatingOccupancyFraction``` informs Java VM when CMS should be triggered. Basically, it allows to create a buffer in heap, which can be filled with data, while CMS is working. Thus percent should be back calculated from the speed in which memory is consumed in old generation during production load. Such percent should be chosen carefully, if it will be small &mdash; CMS will work to often, if it will be to big &mdash; CMS will be triggered too late and [concurrent mode failure](http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#cms.concurrent_mode_failure) may occur.
+By default CMS GC uses set of heuristic rules to trigger garbage collection. This makes GC less predictable and usually tends to delay collection until old generation is almost occupied. Initiating it in advance allows to complete collection before old generation is full and thus avoid Full GC (i.e. stop-the-world pause). ```-XX:+UseCMSInitiatingOccupancyOnly``` prevent usage of GC heuristics. ```-XX:CMSInitiatingOccupancyFraction``` informs Java VM when CMS should be triggered. Basically, it allows to create a buffer in heap, which can be filled with data, while CMS is working. Thus percent should be back calculated from the speed in which memory is consumed in old generation during production load. Such percent should be chosen carefully, if it will be small &mdash; CMS will work to often, if it will be to big &mdash; CMS will be triggered too late and [concurrent mode failure](http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#cms.concurrent_mode_failure) may occur. Usually ```-XX:CMSInitiatingOccupancyFraction``` should be at the level 70, which mean that application should utilize less that 70% of old generation.
 
 ```
 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark
