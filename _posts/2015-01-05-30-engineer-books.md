@@ -37,6 +37,8 @@ Books are listed in order of my first expirience in their subject.
 
 * [Pro JavaScript Techniques by John Resig](http://www.amazon.com/Pro-JavaScript-Techniques-John-Resig/dp/1590597273/ref=asap_bc?ie=UTF8){:target="_blank"}
 
+* [HTTP/1.1 Specification](http://www.w3.org/Protocols/rfc2616/rfc2616.html){:target="_blank"} and [HTTP/2 Draft Specifications](https://github.com/http2/http2-spec){:target="_blank"}
+
 * [Test Driven Development by Kent Beck](http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1420637486&sr=8-1&keywords=Test-driven+development){:target="_blank"}
 
 * [The Art of Multiprocessor Programming by Maurice Herlihy](http://www.amazon.com/Art-Multiprocessor-Programming-Revised-Reprint/dp/0123973376/ref=sr_1_1?ie=UTF8&qid=1420605038&sr=8-1&keywords=art+of+multiprocessor+programming){:target="_blank"}
@@ -45,27 +47,25 @@ Books are listed in order of my first expirience in their subject.
 
 * [Patterns of Enterprise Application Architecture by Martin Fowler](http://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420/ref=sr_1_6?ie=UTF8&qid=1420640738&sr=8-6&keywords=design+patterns){:target="_blank"}
 
-* [HTTP/1.1 Specification](http://www.w3.org/Protocols/rfc2616/rfc2616.html){:target="_blank"} and [HTTP/2 Draft Specifications](https://github.com/http2/http2-spec){:target="_blank"}
-
 * [Essential Scrum by Kenneth S. Rubin](http://www.amazon.com/Essential-Scrum-Practical-Addison-Wesley-Signature-ebook/dp/B008NAKA5O/ref=sr_1_3?s=digital-text&ie=UTF8&qid=1420682291&sr=1-3&keywords=scrum){:target="_blank"}
 
 * [Peopleware by Tom DeMarco, Tim Lister](http://www.amazon.com/Peopleware-Productive-Projects-Teams-3rd/dp/0321934113/ref=sr_1_27?s=books&ie=UTF8&qid=1420682491&sr=1-27&keywords=project+management+software){:target="_blank"}
 
-* [Groovy in Action by Dierk König, Guillaume Laforge](http://www.amazon.com/Groovy-Action-Dierk-246-nig/dp/1935182447/ref=sr_1_3?ie=UTF8&qid=1420681081&sr=8-3&keywords=groovy){:target="_blank"} and [Martin Odersky, Lex Spoon, Bill Venners. Programming in Scala](http://www.amazon.com/Programming-Scala-Comprehensive-Step---Step-ebook/dp/B004Z1FTXS/ref=sr_1_1?ie=UTF8&qid=1420681184&sr=8-1&keywords=scala){:target="_blank"}
-
-* [Oracle Coherence 3.5 by Aleksandar Seovic, Mark Falco, Patrick Peralta](http://www.amazon.com/Oracle-Coherence-3-5-Aleksandar-Seovic/dp/1847196128/ref=sr_1_9?ie=UTF8&qid=1420680913&sr=8-9&keywords=coherence){:target="_blank"}
-
 * [Introduction to Algorithms by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein](http://www.amazon.com/Introduction-Algorithms-3rd-Thomas-Cormen/dp/0262033844/ref=sr_1_2?ie=UTF8&qid=1420680992&sr=8-2&keywords=algorithms){:target="_blank"}
 
-* [Introduction to Information Retrieval by Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze](http://www.amazon.com/Introduction-Information-Retrieval-Christopher-Manning/dp/0521865719/ref=sr_1_1?ie=UTF8&qid=1420681526&sr=8-1&keywords=Introduction+to+Information+Retrieval){:target="_blank"}
+* [Groovy in Action by Dierk König, Guillaume Laforge](http://www.amazon.com/Groovy-Action-Dierk-246-nig/dp/1935182447/ref=sr_1_3?ie=UTF8&qid=1420681081&sr=8-3&keywords=groovy){:target="_blank"} and [Martin Odersky, Lex Spoon, Bill Venners. Programming in Scala](http://www.amazon.com/Programming-Scala-Comprehensive-Step---Step-ebook/dp/B004Z1FTXS/ref=sr_1_1?ie=UTF8&qid=1420681184&sr=8-1&keywords=scala){:target="_blank"}
+
+* [The Art of Scalability by Martin L. Abbott](http://www.amazon.com/Art-Scalability-Architecture-Organizations-Enterprise/dp/0137030428/ref=sr_1_1?s=books&ie=UTF8&qid=1420418231&sr=1-1&keywords=Art+of+Scalability){:target="_blank"}
+
+* [Oracle Coherence 3.5 by Aleksandar Seovic, Mark Falco, Patrick Peralta](http://www.amazon.com/Oracle-Coherence-3-5-Aleksandar-Seovic/dp/1847196128/ref=sr_1_9?ie=UTF8&qid=1420680913&sr=8-9&keywords=coherence){:target="_blank"}
 
 * [Principles of Transaction Processing by Philip A. Bernstein, Eric Newcomer](http://www.amazon.com/Principles-Transaction-Processing-Kaufmann-Management/dp/1558606238/ref=sr_1_2?ie=UTF8&qid=1420418558&sr=8-2&keywords=transaction+processing){:target="_blank"}
 
 * [SOA Design Patterns by Thomas Rischbeck, Thomas Erl](http://www.amazon.com/Design-Patterns-Prentice-Service-Oriented-Computing/dp/0136135161/ref=sr_1_1?ie=UTF8&qid=1420640703&sr=8-1&keywords=Soa+design+patterns){:target="_blank"}
 
-* [NoSQL Distilled by Pramod J. Sadalage and Martin Fowler](http://www.amazon.com/NoSQL-Distilled-Emerging-Polyglot-Persistence/dp/0321826620/ref=sr_1_1?ie=UTF8&qid=1420418375&sr=8-1&keywords=NoSQL+Distilled){:target="_blank"}
+* [Introduction to Information Retrieval by Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze](http://www.amazon.com/Introduction-Information-Retrieval-Christopher-Manning/dp/0521865719/ref=sr_1_1?ie=UTF8&qid=1420681526&sr=8-1&keywords=Introduction+to+Information+Retrieval){:target="_blank"}
 
-* [The Art of Scalability by Martin L. Abbott](http://www.amazon.com/Art-Scalability-Architecture-Organizations-Enterprise/dp/0137030428/ref=sr_1_1?s=books&ie=UTF8&qid=1420418231&sr=1-1&keywords=Art+of+Scalability){:target="_blank"}
+* [NoSQL Distilled by Pramod J. Sadalage and Martin Fowler](http://www.amazon.com/NoSQL-Distilled-Emerging-Polyglot-Persistence/dp/0321826620/ref=sr_1_1?ie=UTF8&qid=1420418375&sr=8-1&keywords=NoSQL+Distilled){:target="_blank"}
 
 * [Continuous Delivery by Jez Humble, David Farley](http://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912/ref=sr_1_1?ie=UTF8&qid=1420418657&sr=8-1&keywords=continuous+delivery){:target="_blank"}
 
