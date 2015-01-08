@@ -9,7 +9,7 @@ share: true
 categories: [blog]
 ---
 
-Some books are replaced with never analogs. Considerable part of my experience and knowledge (e.g. PHP, GWT or Hybris) is absolutely irrelevant to Software engineering, thus such books where intentionally skipped.
+Some books are replaced with newer analogs. Considerable part of my experience and knowledge (e.g. PHP, GWT or Hybris) is absolutely irrelevant to Software engineering, thus such books where intentionally skipped.
 
 Books are listed in order of my first expirience in their subject.
 
@@ -53,7 +53,7 @@ Books are listed in order of my first expirience in their subject.
 
 * [Introduction to Algorithms by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein](http://www.amazon.com/Introduction-Algorithms-3rd-Thomas-Cormen/dp/0262033844/ref=sr_1_2?ie=UTF8&qid=1420680992&sr=8-2&keywords=algorithms){:target="_blank"}
 
-* [Groovy in Action by Dierk König, Guillaume Laforge](http://www.amazon.com/Groovy-Action-Dierk-246-nig/dp/1935182447/ref=sr_1_3?ie=UTF8&qid=1420681081&sr=8-3&keywords=groovy){:target="_blank"} and [Martin Odersky, Lex Spoon, Bill Venners. Programming in Scala](http://www.amazon.com/Programming-Scala-Comprehensive-Step---Step-ebook/dp/B004Z1FTXS/ref=sr_1_1?ie=UTF8&qid=1420681184&sr=8-1&keywords=scala){:target="_blank"}
+* [Groovy in Action by Dierk König, Guillaume Laforge](http://www.amazon.com/Groovy-Action-Dierk-246-nig/dp/1935182447/ref=sr_1_3?ie=UTF8&qid=1420681081&sr=8-3&keywords=groovy){:target="_blank"} and [Programming in Scala by Martin Odersky, Lex Spoon, Bill Venners](http://www.amazon.com/Programming-Scala-Comprehensive-Step---Step-ebook/dp/B004Z1FTXS/ref=sr_1_1?ie=UTF8&qid=1420681184&sr=8-1&keywords=scala){:target="_blank"}
 
 * [The Art of Scalability by Martin L. Abbott](http://www.amazon.com/Art-Scalability-Architecture-Organizations-Enterprise/dp/0137030428/ref=sr_1_1?s=books&ie=UTF8&qid=1420418231&sr=1-1&keywords=Art+of+Scalability){:target="_blank"}
 
