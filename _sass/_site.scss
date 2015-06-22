@@ -274,3 +274,37 @@ pre {
 b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a, .highlight {
 	@include transition(all .2s ease);
 }
+
+.fa-2 {
+  font-size: 2em;
+}
+.fa-3 {
+  font-size: 4em;
+}
+.fa-4 {
+  font-size: 7em;
+}
+.fa-5 {
+  font-size: 12em;
+}
+.fa-6 {
+  font-size: 20em;
+}
+
+.subscribe-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+	max-width: 500px;
+    width: auto;
+    margin: 20px auto;
+
+    .subscribe-popup-container {
+	    @include outer-container();
+
+	    .subscribe-popup-column {
+	    	text-align: center;
+			@include span-columns(4);
+		}
+    }
+}

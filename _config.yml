@@ -51,3 +51,4 @@ owner:
     ad-client:
     ad-slot: 
   bing-verify:
+  rss-subscriber: "http://feeds.feedburner.com/software-engineer-sandbox"

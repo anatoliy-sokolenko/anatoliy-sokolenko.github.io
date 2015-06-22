@@ -12,6 +12,23 @@
           fuzzy: true,
           noResults: '<p>Nothing found.</p>'
         });
+
+      $('.social-subscribe a').magnificPopup({
+        items: {
+          src: '#subscribe-popup',
+          type: 'inline'
+        }
+      });
+
+      $('.subscribe-popup #mc-embedded-subscribe, .subscribe-popup a').click(function(e) {
+        var $inst = $.magnificPopup.instance;
+
+        if ($inst.currItem.src == "#subscribe-popup") {
+          $inst.close();
+        }
+
+        return true;
+      });
   });
 
   (function( $, window, undefined ) {

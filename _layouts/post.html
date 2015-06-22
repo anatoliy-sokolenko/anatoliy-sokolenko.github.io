@@ -46,6 +46,10 @@
         <span class="social-share-googleplus">
           <a target="_blank" href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
         </span>
+        <span class="social-subscribe">
+          <a target="_blank" href="{% if site.owner.rss-subscriber %}{{site.owner.rss-subscriber}}{% else %}{{ site.url }}/feed.xml{% endif %}" title="Subscribe" itemprop="Subscribe"><i class="fa fa-rss"></i> Subscribe</a>
+        </span>
+
         <!-- /.social-share -->
         {% endif %}
         {% if page.ads == true %}{% include ad-sidebar.html %}<!-- /.google-ads -->{% endif %}
@@ -73,6 +77,25 @@
 </div><!-- /.footer-wrapper -->
 
 {% include scripts.html %}	        
+
+<div id="subscribe-popup" class="mfp-hide subscribe-popup">
+  <div class="subscribe-popup-container">
+    <div class="subscribe-popup-column">
+      <a href="{% if site.owner.rss-subscriber %}{{site.owner.rss-subscriber}}{% else %}{{ site.url }}/feed.xml{% endif %}" title="Atom/RSS feed" target="_blank"><i class="fa fa-rss-square fa-4"></i></a>
+    </div>
+    <div class="subscribe-popup-column">
+      <form action="//sokolenko.us10.list-manage.com/subscribe/post?u=572b4357a28a76cccea0b7aa6&amp;id=6d95a2c6a6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <label for="subscribe-email">Mailing list</label>
+        <input id="subscribe-email" type="email" value="" name="EMAIL" type="text" class="email" placeholder="email address" required/>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_572b4357a28a76cccea0b7aa6_6d95a2c6a6" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn"></div>
+      </form>
+    </div>
+    <div class="subscribe-popup-column">
+      {% if site.owner.twitter %}<a href="http://twitter.com/{{ site.owner.twitter }}" title="{{ site.owner.name}} on Twitter" target="_blank"><i class="fa fa-twitter-square fa-4"></i></a>{% endif %}
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
