@@ -111,7 +111,7 @@ Ratio which determines size of the survivour space relatively to eden size. Rati
 -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled
 ```
 
-As response time is critical for server application concurrent collector feets best for Web applications. Unfortunatelly G1 is still not production ready, thus we have to use Concurrent Mark-Sweep collector.
+As response time is critical for server application concurrent collector fits best for Web applications. Unfortunatelly G1 is still not production ready, thus we have to use Concurrent Mark-Sweep collector.
 
 ```
 -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=<percent>
@@ -152,7 +152,7 @@ GC log files rotation makes analysis of garbage collection problems easier, also
 -Dsun.net.inetaddr.ttl=<TTL in seconds>
 ```
 
-Number of seconds during which DNS record will be cached in Java VM. Default behaviour of Java VM 6 was to cache forever, which does not feet server application needs, as you would not want to restart server each time, when IP has changed in DNS record. It has been changed in Java VM 7 to cache for 30 seconds, but only if security manager is not installed. Depending on version of Java VM and presence of security manager DNS records still can be cached infinitely.
+Number of seconds during which DNS record will be cached in Java VM. Default behaviour of Java VM 6 was to cache forever, which does not fit server application needs, as you would not want to restart server each time, when IP has changed in DNS record. It has been changed in Java VM 7 to cache for 30 seconds, but only if security manager is not installed. Depending on version of Java VM and presence of security manager DNS records still can be cached infinitely.
 Commonly recommended option is to disable DNS caching at all, which can be reason for performance degradation. Requests to DNS are performed in synchorized block and only one request is performed in any point in time. Thus, if your application is havily utilizing network it will experience saturation on DNS requests, so TTL value ```0``` should **never** be used.
 
 Better solution is to cache for reasonable not long period, for example 1 minute (```60``` seconds). This mean that system your application is interacting with have to guaranty that two different IPs will continue to work properly during this 1 minute, otherwise lower TTL value should be chosen. It should always be reasonable (not equal to ```0```) to prevent possible contention of requests to DNS. 
