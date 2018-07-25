@@ -3,7 +3,7 @@ title: "Java VM Options You Should Always Use in Production"
 layout: "post"
 permalink: "/2014/11/javavm-options-production.html"
 description: 
-tags: [java, production]
+tags: []
 comments: true
 share: true
 categories: [blog]

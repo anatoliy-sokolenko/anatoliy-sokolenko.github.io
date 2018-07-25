@@ -11,10 +11,10 @@ blogger:
     siteid: "1763451622132357586"
     postid: "7145325113912378974"
     comments: "0"
-tags: [prototype, groovy]
+tags: []
 comments: true
 share: true
-categories: [blog]
+categories: [trash]
 ---
 
 Start of new software project is always complicated and fuzzy task. Best way to reduce it's complexity is to learn more about subject area, systems to integrate with and technologies that will be used. In solving all this issues prototyping might help dramatically.

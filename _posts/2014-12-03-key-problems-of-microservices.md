@@ -3,7 +3,7 @@ title: "Key Problems of Microservice Architecture"
 layout: "post"
 permalink: "/2014/12/key-problems-of-microservices.html"
 description: 
-tags: [java, microservice, Netflix OSS, Hystrix, Ribbon]
+tags: []
 comments: true
 share: true
 categories: [blog]

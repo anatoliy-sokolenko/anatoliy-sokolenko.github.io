@@ -11,7 +11,7 @@ blogger:
     siteid: "1763451622132357586"
     postid: "2757051152007371573"
     comments: "3"
-tags: [performance, java, orika, dozer]
+tags: []
 comments: true
 categories: [blog]
 ---

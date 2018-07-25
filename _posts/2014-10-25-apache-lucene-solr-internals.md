@@ -3,7 +3,7 @@ title: "Apache Lucene/Solr Internals Tech Talk"
 layout: "post"
 permalink: "/2014/10/apache-lucene-solr-internals.html"
 description: 
-tags: [Apache Solr, java]
+tags: []
 comments: true
 share: true
 categories: [blog]

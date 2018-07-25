@@ -3,7 +3,7 @@ title: "30 Books that Made Me Software Engineer by 30"
 layout: "post"
 permalink: "/2015/01/30-engineer-books.html"
 description: 
-tags: [engineering]
+tags: []
 comments: true
 share: true
 categories: [blog]
