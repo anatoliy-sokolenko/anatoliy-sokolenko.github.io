@@ -5,25 +5,26 @@ locale: en_US
 description: #Describe your website here.
 logo: #site-logo.png
 search: true
-url: http://blog.sokolenko.me
+url: https://blog.sokolenko.me
 
 # Jekyll configuration
 
 permalink:   /:categories/:title/
 markdown:    kramdown
-highlighter: pygments
+highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
-gems:
+plugins:
   - jekyll-sitemap
+  - jekyll-gist
 
 kramdown:
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..2
-  use_coderay: false
+  enable_coderay: false
   input: GFM
 
 include: [".htaccess"]
