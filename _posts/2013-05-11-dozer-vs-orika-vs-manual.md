@@ -36,7 +36,7 @@ Data model that has been used for test include combinations which usually appear
 * collections
 * enums
 
-Source code of tests is <a href="https://github.com/galak/compare-java-converters" target="_blank">available at GitHub</a>.
+Source code of tests is <a href="https://github.com/galak-fyyar/compare-java-converters" target="_blank">available at GitHub</a>.
 
 Tests has been performed on:
 
